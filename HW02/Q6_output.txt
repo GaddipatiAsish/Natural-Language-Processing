@@ -1,0 +1,159 @@
++++++++++++++++++++++++MLEPROBDIST+++++++++++++++++++++++
+
+/Library/Frameworks/Python.framework/Versions/3.4/bin/python3.4 "/Users/GaddipatiAsish/OneDrive/Ohio University/NLP/Assignments/HW02/Q6_Part1.py"
+Started Loading the Data
+Data Loaded Successfully. Stats are
+Training Data Sentences:  1921
+Testing Data  Sentences:  1993
+done
+1. For all words
+Training Done! Model Info:  <HiddenMarkovModelTagger 46 states and 8336 output symbols>
+accuracy over 50914 tokens: 29.32
+2. For out-of-vocabulary words
+accuracy over 6426 tokens: 24.26
+3. For all words with out punctuations
+accuracy over 39515 tokens: 33.49
+Top 10 Highest Tag Entropy Words
+set {('set', 'VB'), ('set', 'VBD'), ('set', 'VBP'), ('set', 'NN'), ('set', 'VBN')}
+[5, 2, 1, 1, 5]
+cut {('cut', 'VB'), ('cut', 'VBN'), ('cut', 'VBD'), ('cut', 'NN')}
+[6, 3, 5, 3]
+forecast {('forecast', 'NN'), ('forecast', 'VBN'), ('forecast', 'VBD'), ('forecast', 'VBP')}
+[2, 1, 1, 1]
+close {('close', 'VB'), ('close', 'JJ'), ('close', 'RB'), ('close', 'NN')}
+[5, 3, 2, 6]
+put {('put', 'NN'), ('put', 'VBN'), ('put', 'VB'), ('put', 'VBD')}
+[1, 4, 4, 3]
+hit {('hit', 'VB'), ('hit', 'VBP'), ('hit', 'VBD'), ('hit', 'VBN')}
+[1, 1, 3, 2]
+down {('down', 'RP'), ('down', 'NN'), ('down', 'RB'), ('down', 'IN')}
+[6, 1, 7, 13]
+spread {('spread', 'VBN'), ('spread', 'NN'), ('spread', 'VB')}
+[1, 1, 1]
+range {('range', 'VBP'), ('range', 'VB'), ('range', 'NN')}
+[1, 1, 1]
+try {('try', 'VBP'), ('try', 'NN'), ('try', 'VB')}
+[1, 1, 1]
+4. For Top 10 highest entropy words
+accuracy over 107 tokens: 19.63
+
+Process finished with exit code 0
+
++++++++++++++++++++++++LaplaceProbDist+++++++++++++++++++++++
+/Library/Frameworks/Python.framework/Versions/3.4/bin/python3.4 "/Users/GaddipatiAsish/OneDrive/Ohio University/NLP/Assignments/HW02/Q6_Part1.py"
+Started Loading the Data
+Data Loaded Successfully. Stats are
+Training Data Sentences:  1921
+Testing Data  Sentences:  1993
+1. For all words
+Training Done! Model Info:  <HiddenMarkovModelTagger 46 states and 8336 output symbols>
+accuracy over 50914 tokens: 80.97
+2. For out-of-vocabulary words
+accuracy over 6426 tokens: 24.26
+3. For all words with out punctuations
+accuracy over 39515 tokens: 73.08
+Top 10 Highest Tag Entropy Words
+set {('set', 'NN'), ('set', 'VBD'), ('set', 'VBN'), ('set', 'VBP'), ('set', 'VB')}
+[1, 2, 5, 1, 5]
+cut {('cut', 'VBD'), ('cut', 'VB'), ('cut', 'VBN'), ('cut', 'NN')}
+[5, 6, 3, 3]
+forecast {('forecast', 'VBD'), ('forecast', 'VBN'), ('forecast', 'NN'), ('forecast', 'VBP')}
+[1, 1, 2, 1]
+close {('close', 'NN'), ('close', 'VB'), ('close', 'JJ'), ('close', 'RB')}
+[6, 5, 3, 2]
+put {('put', 'NN'), ('put', 'VBN'), ('put', 'VB'), ('put', 'VBD')}
+[1, 4, 4, 3]
+hit {('hit', 'VBN'), ('hit', 'VBD'), ('hit', 'VBP'), ('hit', 'VB')}
+[2, 3, 1, 1]
+down {('down', 'RP'), ('down', 'RB'), ('down', 'IN'), ('down', 'NN')}
+[6, 7, 13, 1]
+Plains {('Plains', 'NNPS'), ('Plains', 'NNP'), ('Plains', 'NNS')}
+[1, 1, 1]
+range {('range', 'VBP'), ('range', 'VB'), ('range', 'NN')}
+[1, 1, 1]
+try {('try', 'VB'), ('try', 'NN'), ('try', 'VBP')}
+[1, 1, 1]
+4. For Top 10 highest entropy words
+accuracy over 107 tokens: 6.54
+
+Process finished with exit code 0
+
++++++++++++++++++++++++WittenBellProbDist+++++++++++++++++++++++
+/Library/Frameworks/Python.framework/Versions/3.4/bin/python3.4 "/Users/GaddipatiAsish/OneDrive/Ohio University/NLP/Assignments/HW02/Q6_Part1.py"
+Started Loading the Data
+Data Loaded Successfully. Stats are
+Training Data Sentences:  1921
+Testing Data  Sentences:  1993
+1. For all words
+Training Done! Model Info:  <HiddenMarkovModelTagger 46 states and 8336 output symbols>
+accuracy over 50914 tokens: 89.82
+2. For out-of-vocabulary words
+accuracy over 6426 tokens: 24.26
+3. For all words with out punctuations
+accuracy over 39515 tokens: 85.88
+Top 10 Highest Tag Entropy Words
+set {('set', 'VB'), ('set', 'VBN'), ('set', 'VBD'), ('set', 'VBP'), ('set', 'NN')}
+[5, 5, 2, 1, 1]
+cut {('cut', 'VBD'), ('cut', 'VBN'), ('cut', 'VB'), ('cut', 'NN')}
+[5, 3, 6, 3]
+forecast {('forecast', 'VBN'), ('forecast', 'NN'), ('forecast', 'VBD'), ('forecast', 'VBP')}
+[1, 2, 1, 1]
+close {('close', 'VB'), ('close', 'NN'), ('close', 'RB'), ('close', 'JJ')}
+[5, 6, 2, 3]
+put {('put', 'NN'), ('put', 'VBN'), ('put', 'VBD'), ('put', 'VB')}
+[1, 4, 3, 4]
+hit {('hit', 'VBD'), ('hit', 'VBN'), ('hit', 'VB'), ('hit', 'VBP')}
+[3, 2, 1, 1]
+down {('down', 'RB'), ('down', 'IN'), ('down', 'NN'), ('down', 'RP')}
+[7, 13, 1, 6]
+spread {('spread', 'VB'), ('spread', 'NN'), ('spread', 'VBN')}
+[1, 1, 1]
+try {('try', 'NN'), ('try', 'VBP'), ('try', 'VB')}
+[1, 1, 1]
+Plains {('Plains', 'NNPS'), ('Plains', 'NNS'), ('Plains', 'NNP')}
+[1, 1, 1]
+4. For Top 10 highest entropy words
+accuracy over 107 tokens: 12.15
+
+Process finished with exit code 0
+
++++++++++++++++++++++++SimpleGoodTuringProbDist+++++++++++++++++++++++
+/Library/Frameworks/Python.framework/Versions/3.4/bin/python3.4 "/Users/GaddipatiAsish/OneDrive/Ohio University/NLP/Assignments/HW02/Q6_Part1.py"
+Started Loading the Data
+Data Loaded Successfully. Stats are
+Training Data Sentences:  1921
+Testing Data  Sentences:  1993
+1. For all words
+/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/nltk/probability.py:1276: UserWarning: SimpleGoodTuring did not find a proper best fit line for smoothing probabilities of occurrences. The probability estimates are likely to be unreliable.
+  warnings.warn('SimpleGoodTuring did not find a proper best fit '
+Training Done! Model Info:  <HiddenMarkovModelTagger 46 states and 8336 output symbols>
+accuracy over 50914 tokens: 89.74
+2. For out-of-vocabulary words
+accuracy over 6426 tokens: 24.26
+3. For all words with out punctuations
+accuracy over 39515 tokens: 85.79
+Top 10 Highest Tag Entropy Words
+set {('set', 'VB'), ('set', 'NN'), ('set', 'VBD'), ('set', 'VBN'), ('set', 'VBP')}
+[5, 1, 2, 5, 1]
+cut {('cut', 'VBD'), ('cut', 'VBN'), ('cut', 'VB'), ('cut', 'NN')}
+[5, 3, 6, 3]
+forecast {('forecast', 'VBN'), ('forecast', 'VBD'), ('forecast', 'VBP'), ('forecast', 'NN')}
+[1, 1, 1, 2]
+close {('close', 'VB'), ('close', 'JJ'), ('close', 'RB'), ('close', 'NN')}
+[5, 3, 2, 6]
+put {('put', 'VBD'), ('put', 'NN'), ('put', 'VBN'), ('put', 'VB')}
+[3, 1, 4, 4]
+hit {('hit', 'VBN'), ('hit', 'VBD'), ('hit', 'VB'), ('hit', 'VBP')}
+[2, 3, 1, 1]
+down {('down', 'RP'), ('down', 'NN'), ('down', 'IN'), ('down', 'RB')}
+[6, 1, 13, 7]
+range {('range', 'NN'), ('range', 'VBP'), ('range', 'VB')}
+[1, 1, 1]
+try {('try', 'NN'), ('try', 'VB'), ('try', 'VBP')}
+[1, 1, 1]
+Plains {('Plains', 'NNP'), ('Plains', 'NNPS'), ('Plains', 'NNS')}
+[1, 1, 1]
+4. For Top 10 highest entropy words
+accuracy over 107 tokens: 15.89
+
+Process finished with exit code 0
