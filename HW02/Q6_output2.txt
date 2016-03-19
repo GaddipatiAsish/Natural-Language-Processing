@@ -1,0 +1,212 @@
++++++++++++++++++++++++Most Likely Tagger+++++++++++++++++++++++
+Connected to pydev debugger (build 143.1919)
+Started Loading the Data
+Data Loaded Successfully. Stats are
+Training Data Sentences:  1921
+Testing Data  Sentences:  1993
+Numerator: 43447 Denomenator:  50914
+Accuracy for all words :  85.33409278391012
+numerator:  1405 denominator:  6426
+accuracy:  21.86430127606598
+Accuracy for OOV's : 21.86430127606598
+numerator:  33006 denominator:  39515
+accuracy:  83.52777426293812
+Accuracy for words with out punctuations 83.52777426293812
+Top 10 Highest Tag Entropy Words
+set {('set', 'VB'), ('set', 'VBN'), ('set', 'VBP'), ('set', 'NN'), ('set', 'VBD')}
+[5, 5, 1, 1, 2]
+cut {('cut', 'NN'), ('cut', 'VB'), ('cut', 'VBN'), ('cut', 'VBD')}
+[3, 6, 3, 5]
+forecast {('forecast', 'VBN'), ('forecast', 'NN'), ('forecast', 'VBD'), ('forecast', 'VBP')}
+[1, 2, 1, 1]
+close {('close', 'RB'), ('close', 'NN'), ('close', 'JJ'), ('close', 'VB')}
+[2, 6, 3, 5]
+put {('put', 'VBD'), ('put', 'NN'), ('put', 'VBN'), ('put', 'VB')}
+[3, 1, 4, 4]
+hit {('hit', 'VBD'), ('hit', 'VB'), ('hit', 'VBN'), ('hit', 'VBP')}
+[3, 1, 2, 1]
+down {('down', 'NN'), ('down', 'RP'), ('down', 'IN'), ('down', 'RB')}
+[1, 6, 13, 7]
+try {('try', 'VB'), ('try', 'NN'), ('try', 'VBP')}
+[1, 1, 1]
+range {('range', 'NN'), ('range', 'VB'), ('range', 'VBP')}
+[1, 1, 1]
+spread {('spread', 'VB'), ('spread', 'VBN'), ('spread', 'NN')}
+[1, 1, 1]
+numerator:  33 denominator:  107
+accuracy:  30.8411214953271
+Accuracy for Top 10 Highest Entropy Words : 30.8411214953271
+
+
+
+
+
++++++++++++++++++++++++MLEPROBDIST+++++++++++++++++++++++
+/Library/Frameworks/Python.framework/Versions/3.4/bin/python3.4 "/Users/GaddipatiAsish/OneDrive/Ohio University/NLP/Assignments/HW02/Q6_Final1.py"
+Started Loading the Data
+Data Loaded Successfully. Stats are
+Training Data Sentences:  1921
+Testing Data  Sentences:  1993
+Training Done! Model Info:  <HiddenMarkovModelTagger 46 states and 8336 output symbols>
+1. Accuracy of all the words
+accuracy over 50914 tokens: 29.32
+2. Accuracy for OOV's
+numerator:  1559 denominator:  6426
+accuracy:  24.260815437286027
+Accuracy for all words with out punctuations
+numerator:  12280 denominator:  39515
+accuracy:  31.076806276097685
+4. Accuracy for High Entropy words
+Top 10 Highest Tag Entropy Words
+set {('set', 'VBN'), ('set', 'VBP'), ('set', 'VB'), ('set', 'NN'), ('set', 'VBD')}
+[5, 1, 5, 1, 2]
+cut {('cut', 'VB'), ('cut', 'VBD'), ('cut', 'VBN'), ('cut', 'NN')}
+[6, 5, 3, 3]
+forecast {('forecast', 'NN'), ('forecast', 'VBD'), ('forecast', 'VBN'), ('forecast', 'VBP')}
+[2, 1, 1, 1]
+close {('close', 'VB'), ('close', 'RB'), ('close', 'JJ'), ('close', 'NN')}
+[5, 2, 3, 6]
+put {('put', 'VB'), ('put', 'VBD'), ('put', 'VBN'), ('put', 'NN')}
+[4, 3, 4, 1]
+hit {('hit', 'VBN'), ('hit', 'VBP'), ('hit', 'VBD'), ('hit', 'VB')}
+[2, 1, 3, 1]
+down {('down', 'RP'), ('down', 'IN'), ('down', 'NN'), ('down', 'RB')}
+[6, 13, 1, 7]
+range {('range', 'VB'), ('range', 'NN'), ('range', 'VBP')}
+[1, 1, 1]
+Plains {('Plains', 'NNS'), ('Plains', 'NNPS'), ('Plains', 'NNP')}
+[1, 1, 1]
+spread {('spread', 'VBN'), ('spread', 'VB'), ('spread', 'NN')}
+[1, 1, 1]
+numerator:  21 denominator:  107
+accuracy:  19.626168224299064
+
+Process finished with exit code 0
+
++++++++++++++++++++++++LaplaceProbDist+++++++++++++++++++++++
+
+/Library/Frameworks/Python.framework/Versions/3.4/bin/python3.4 "/Users/GaddipatiAsish/OneDrive/Ohio University/NLP/Assignments/HW02/Q6_Final1.py"
+Started Loading the Data
+Data Loaded Successfully. Stats are
+Training Data Sentences:  1921
+Testing Data  Sentences:  1993
+Training Done! Model Info:  <HiddenMarkovModelTagger 46 states and 8336 output symbols>
+1. Accuracy of all the words
+accuracy over 50914 tokens: 80.97
+2. Accuracy for OOV's
+numerator:  2415 denominator:  6426
+accuracy:  37.58169934640523
+Accuracy for all words with out punctuations
+numerator:  30870 denominator:  39515
+accuracy:  78.12223206377325
+4. Accuracy for High Entropy words
+Top 10 Highest Tag Entropy Words
+set {('set', 'NN'), ('set', 'VBD'), ('set', 'VB'), ('set', 'VBP'), ('set', 'VBN')}
+[1, 2, 5, 1, 5]
+cut {('cut', 'NN'), ('cut', 'VBD'), ('cut', 'VBN'), ('cut', 'VB')}
+[3, 5, 3, 6]
+forecast {('forecast', 'NN'), ('forecast', 'VBP'), ('forecast', 'VBN'), ('forecast', 'VBD')}
+[2, 1, 1, 1]
+close {('close', 'RB'), ('close', 'NN'), ('close', 'JJ'), ('close', 'VB')}
+[2, 6, 3, 5]
+put {('put', 'VBN'), ('put', 'VBD'), ('put', 'NN'), ('put', 'VB')}
+[4, 3, 1, 4]
+hit {('hit', 'VBD'), ('hit', 'VBN'), ('hit', 'VB'), ('hit', 'VBP')}
+[3, 2, 1, 1]
+down {('down', 'RP'), ('down', 'IN'), ('down', 'NN'), ('down', 'RB')}
+[6, 13, 1, 7]
+try {('try', 'NN'), ('try', 'VB'), ('try', 'VBP')}
+[1, 1, 1]
+range {('range', 'NN'), ('range', 'VB'), ('range', 'VBP')}
+[1, 1, 1]
+spread {('spread', 'VBN'), ('spread', 'NN'), ('spread', 'VB')}
+[1, 1, 1]
+numerator:  59 denominator:  107
+accuracy:  55.140186915887845
+
+Process finished with exit code 0
+
+
++++++++++++++++++++++++WittenBellProbDist+++++++++++++++++++++++
+/Library/Frameworks/Python.framework/Versions/3.4/bin/python3.4 "/Users/GaddipatiAsish/OneDrive/Ohio University/NLP/Assignments/HW02/Q6_Final1.py"
+Started Loading the Data
+Data Loaded Successfully. Stats are
+Training Data Sentences:  1921
+Testing Data  Sentences:  1993
+Training Done! Model Info:  <HiddenMarkovModelTagger 46 states and 8336 output symbols>
+1. Accuracy of all the words
+accuracy over 50914 tokens: 89.82
+2. Accuracy for OOV's
+numerator:  3230 denominator:  6426
+accuracy:  50.264550264550266
+Accuracy for all words with out punctuations
+numerator:  34918 denominator:  39515
+accuracy:  88.36644312286474
+4. Accuracy for High Entropy words
+Top 10 Highest Tag Entropy Words
+set {('set', 'VBN'), ('set', 'VBD'), ('set', 'VB'), ('set', 'VBP'), ('set', 'NN')}
+[5, 2, 5, 1, 1]
+cut {('cut', 'VBD'), ('cut', 'VBN'), ('cut', 'NN'), ('cut', 'VB')}
+[5, 3, 3, 6]
+forecast {('forecast', 'NN'), ('forecast', 'VBN'), ('forecast', 'VBD'), ('forecast', 'VBP')}
+[2, 1, 1, 1]
+close {('close', 'NN'), ('close', 'VB'), ('close', 'JJ'), ('close', 'RB')}
+[6, 5, 3, 2]
+put {('put', 'VBN'), ('put', 'NN'), ('put', 'VB'), ('put', 'VBD')}
+[4, 1, 4, 3]
+hit {('hit', 'VB'), ('hit', 'VBP'), ('hit', 'VBN'), ('hit', 'VBD')}
+[1, 1, 2, 3]
+down {('down', 'RB'), ('down', 'IN'), ('down', 'RP'), ('down', 'NN')}
+[7, 13, 6, 1]
+try {('try', 'VBP'), ('try', 'VB'), ('try', 'NN')}
+[1, 1, 1]
+Plains {('Plains', 'NNPS'), ('Plains', 'NNP'), ('Plains', 'NNS')}
+[1, 1, 1]
+range {('range', 'VBP'), ('range', 'VB'), ('range', 'NN')}
+[1, 1, 1]
+numerator:  69 denominator:  107
+accuracy:  64.48598130841121
+
+Process finished with exit code 0
+
++++++++++++++++++++++++SimpleGoodTuringProbDist+++++++++++++++++++++++
+/Library/Frameworks/Python.framework/Versions/3.4/bin/python3.4 "/Users/GaddipatiAsish/OneDrive/Ohio University/NLP/Assignments/HW02/Q6_Final1.py"
+Started Loading the Data
+Data Loaded Successfully. Stats are
+Training Data Sentences:  1921
+Testing Data  Sentences:  1993
+Training Done! Model Info:  <HiddenMarkovModelTagger 46 states and 8336 output symbols>
+1. Accuracy of all the words
+accuracy over 50914 tokens: 89.82
+2. Accuracy for OOV's
+numerator:  3230 denominator:  6426
+accuracy:  50.264550264550266
+Accuracy for all words with out punctuations
+numerator:  34918 denominator:  39515
+accuracy:  88.36644312286474
+4. Accuracy for High Entropy words
+Top 10 Highest Tag Entropy Words
+set {('set', 'VBP'), ('set', 'VB'), ('set', 'VBN'), ('set', 'NN'), ('set', 'VBD')}
+[1, 5, 5, 1, 2]
+cut {('cut', 'NN'), ('cut', 'VB'), ('cut', 'VBD'), ('cut', 'VBN')}
+[3, 6, 5, 3]
+forecast {('forecast', 'NN'), ('forecast', 'VBP'), ('forecast', 'VBD'), ('forecast', 'VBN')}
+[2, 1, 1, 1]
+close {('close', 'RB'), ('close', 'VB'), ('close', 'NN'), ('close', 'JJ')}
+[2, 5, 6, 3]
+put {('put', 'VBN'), ('put', 'VBD'), ('put', 'VB'), ('put', 'NN')}
+[4, 3, 4, 1]
+hit {('hit', 'VBD'), ('hit', 'VBN'), ('hit', 'VBP'), ('hit', 'VB')}
+[3, 2, 1, 1]
+down {('down', 'RB'), ('down', 'RP'), ('down', 'IN'), ('down', 'NN')}
+[7, 6, 13, 1]
+range {('range', 'VBP'), ('range', 'NN'), ('range', 'VB')}
+[1, 1, 1]
+Plains {('Plains', 'NNP'), ('Plains', 'NNS'), ('Plains', 'NNPS')}
+[1, 1, 1]
+spread {('spread', 'VB'), ('spread', 'VBN'), ('spread', 'NN')}
+[1, 1, 1]
+numerator:  70 denominator:  107
+accuracy:  65.42056074766354
+
+Process finished with exit code 0

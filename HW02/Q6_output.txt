@@ -157,3 +157,79 @@ Plains {('Plains', 'NNP'), ('Plains', 'NNPS'), ('Plains', 'NNS')}
 accuracy over 107 tokens: 15.89
 
 Process finished with exit code 0
+
++++++++++++++++++++++++Learning Curve+++++++++++++++++++++++
+using WittenBellSmoothing
+
+Connected to pydev debugger (build 143.1919)
+0.1 of files in section 00 for training
+Started Loading the Data
+Data Loaded Successfully. Stats are
+Training Data Sentences:  69
+Testing Data  Sentences:  1993
+Training Done! Model Info:  <HiddenMarkovModelTagger 35 states and 690 output symbols>
+accuracy over 50914 tokens: 68.00
+0.2 of files in section 00 for training
+Started Loading the Data
+Data Loaded Successfully. Stats are
+Training Data Sentences:  212
+Testing Data  Sentences:  1993
+Training Done! Model Info:  <HiddenMarkovModelTagger 37 states and 1695 output symbols>
+accuracy over 50914 tokens: 77.73
+0.3 of files in section 00 for training
+Started Loading the Data
+Data Loaded Successfully. Stats are
+Training Data Sentences:  308
+Testing Data  Sentences:  1993
+Training Done! Model Info:  <HiddenMarkovModelTagger 40 states and 2294 output symbols>
+accuracy over 50914 tokens: 80.26
+0.4 of files in section 00 for training
+Started Loading the Data
+Data Loaded Successfully. Stats are
+Training Data Sentences:  554
+Testing Data  Sentences:  1993
+Training Done! Model Info:  <HiddenMarkovModelTagger 42 states and 3642 output symbols>
+accuracy over 50914 tokens: 83.97
+0.5 of files in section 00 for training
+Started Loading the Data
+Data Loaded Successfully. Stats are
+Training Data Sentences:  996
+Testing Data  Sentences:  1993
+Training Done! Model Info:  <HiddenMarkovModelTagger 43 states and 5370 output symbols>
+accuracy over 50914 tokens: 86.96
+0.6 of files in section 00 for training
+Started Loading the Data
+Data Loaded Successfully. Stats are
+Training Data Sentences:  1096
+Testing Data  Sentences:  1993
+Training Done! Model Info:  <HiddenMarkovModelTagger 45 states and 5693 output symbols>
+accuracy over 50914 tokens: 87.31
+0.7 of files in section 00 for training
+Started Loading the Data
+Data Loaded Successfully. Stats are
+Training Data Sentences:  1239
+Testing Data  Sentences:  1993
+Training Done! Model Info:  <HiddenMarkovModelTagger 45 states and 6193 output symbols>
+accuracy over 50914 tokens: 88.03
+0.8 of files in section 00 for training
+Started Loading the Data
+Data Loaded Successfully. Stats are
+Training Data Sentences:  1378
+Testing Data  Sentences:  1993
+Training Done! Model Info:  <HiddenMarkovModelTagger 45 states and 6606 output symbols>
+accuracy over 50914 tokens: 88.40
+0.9 of files in section 00 for training
+Started Loading the Data
+Data Loaded Successfully. Stats are
+Training Data Sentences:  1676
+Testing Data  Sentences:  1993
+Training Done! Model Info:  <HiddenMarkovModelTagger 45 states and 7543 output symbols>
+accuracy over 50914 tokens: 89.34
+1.0 of files in section 00 for training
+Started Loading the Data
+Data Loaded Successfully. Stats are
+Training Data Sentences:  1921
+Testing Data  Sentences:  1993
+Training Done! Model Info:  <HiddenMarkovModelTagger 46 states and 8336 output symbols>
+accuracy over 50914 tokens: 89.82
+
