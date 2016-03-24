@@ -7,7 +7,9 @@ import pickle as pkl
 
 
 class Q5_Part1(object):
-
+    """
+    Q5_Part1 preprrocess the data set and pickles the file for future use.
+    """
 
     def load_data(self, data_set):
         """

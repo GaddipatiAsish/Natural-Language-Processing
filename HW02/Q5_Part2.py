@@ -5,7 +5,10 @@ from math import log2
 import operator
 
 class Q5_Part2(object):
-
+    """
+    Q5_Part2 makes a lists of words based upon the no of tags possibly it can take.
+    It also computes the entropies of the words and prints the top 10 highest entropy words of the given data set
+    """
     def load_pickled_data(self):
         """
         Load the pickled data set and words that appeared less than 5 times into memory
@@ -81,7 +84,7 @@ final_dict = dict()
 for no_of_tags in tag_words_dict.keys():
     final_dict[no_of_tags]=list()
 
-keys = list(tag_words_dict.keys())[1:]
+keys = list(tag_words_dict.keys())
 for no_of_tags in keys:
     for word in tag_words_dict[no_of_tags]:
         entry = list()
@@ -96,7 +99,8 @@ for no_of_tags in keys:
         # Add the 4-tuple entry to final dictionary
         final_dict[no_of_tags].append(entry)
 print("++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-print(final_dict)
+for key, value in final_dict.items():
+    print(key,len(value))
 
 
 

@@ -7,7 +7,7 @@ import operator
 
 class Q6_Part1(object):
 
-    def load_data(self):
+    def load_data(self, percentage):
         print("Started Loading the Data")
         # Get the complete data
         data_set = treebank.fileids()
@@ -15,10 +15,14 @@ class Q6_Part1(object):
         training_data_fileIds = [file for file in data_set if "wsj_00" in str(file)]
         testing_data_fileIds = [file for file in data_set if "wsj_01" in str(file)]
 
+        # How much percentage of files consider for training?
+        index = int(percentage*len(training_data_fileIds))
+        training_data_fileIds = training_data_fileIds[:index]
+
         tagged_training_data = treebank.tagged_sents(fileids=training_data_fileIds)
         tagged_testing_data = treebank.tagged_sents(fileids=testing_data_fileIds)
 
-        #tagged_training_words = treebank.tagged_words(fileids=training_data_fileIds)
+        tagged_training_words = treebank.tagged_words(fileids=training_data_fileIds)
         tagged_testing_words = treebank.tagged_words(fileids=testing_data_fileIds)
 
         # print(len(tagged_training_data1), len(tagged_testing_data1))
@@ -31,7 +35,7 @@ class Q6_Part1(object):
         print("Training Data Sentences: ", len(tagged_training_data))
         print("Testing Data  Sentences: ", len(tagged_testing_data))
 
-        return tagged_training_data, tagged_testing_data, tagged_testing_words, untagged_training_data, untagged_testing_data
+        return tagged_training_data, tagged_testing_data, tagged_training_words, tagged_testing_words, untagged_training_data, untagged_testing_data
 
     def train_hmm(self, training_data, estimator=None):
         """
@@ -42,7 +46,7 @@ class Q6_Part1(object):
         trainer = hmm.HiddenMarkovModelTrainer()
         model = trainer.train_supervised(training_data, estimator)
         print("Training Done! Model Info: ", model)
-        return model
+        return trainer, model
 
     def test_hmm(self, model, test_data_tagged):
         """
@@ -170,36 +174,73 @@ class Q6_Part1(object):
         updated_tagged_data = list(indexed_sentences.values())
         return updated_tagged_data
 
+    def train_MLT(self, tagged_train_data, untagged_training_data):
+        """
+        Builds a most likely tag tagger from the given tagged training data as WORDS
+        :param train_data:
+        :return: model
+        """
+        # find the set of words
+        words = set()
+        for sent in untagged_training_data:
+            for word in sent:
+                words.add(word)
+        # Define mlt_dict of format {word1:{(word1,tag1):count1, (word1, tag2):count2 ........},..........}
+        mlt_dict = dict()
+        # Initialize keys and values to it
+        for word in words:
+            mlt_dict[word] = dict()
+        # Compute the freq dist of tagged words
+        tagged_words_fdist = FreqDist(tagged_train_data)
+
+        for tagged_word, count in tagged_words_fdist.items():
+            (mlt_dict[tagged_word[0]])[tagged_word] = count
+
+        # Update the dict to contain the most likely tag for each word
+        #for word, inside_dict in mlt_dict.items():
+        #   max_val = max(inside_dict.values())
+        #    inside_dict =
+        print("Training is done!")
+        return mlt_dict
+
+    def test_MLT(self, model, tagged_testing_data):
+        """
+        Takes the model as well as the tagged testing data SENTENCES to tag the words using most likely tag tagger
+        :param model dictionary to use for most likely tag tagger
+        :param tagged_testing_data testing data
+        :return accuracy
+        """
+        untagged_testing_data = [untag(item) for item in tagged_testing_data]
+        for sent in untagged_testing_data:
+            for word in untagged_testing_data:
+                pass
+        return
+        # return accuracy
 
 ob = Q6_Part1()
-(x, y, z, a, b) = ob.load_data()
-
-# Test for all words
-"""
-Logic for cosidering all words as a single sentence
-#q = list()
-#m = list()
-#for sent in y:
-#    m = m + sent
-#q.append(m)
-#print(type(m))
-"""
-
+(x, y, w, z, a, b) = ob.load_data(percentage=1)
+ob.train_MLT(w, a)
 
 """
 Probability Distribution
 """
-#estimator = lambda fdist, bins: MLEProbDist(fdist) # MLE Estimator
+estimator = lambda fdist, bins: MLEProbDist(fdist) # MLE Estimator
 #estimator = lambda fdist, bins: LaplaceProbDist(fdist,bins) # Laplace Estimator
 #estimator = lambda fdist, bins: WittenBellProbDist(fdist,bins) # Written Bell
-estimator = lambda fdist, bins: SimpleGoodTuringProbDist(fdist,bins) # Simple Good Turing
+#estimator = lambda fdist, bins: SimpleGoodTuringProbDist(fdist,bins) # Simple Good Turing
 """
-Test For all Words
+1. For all Words in the test data
 """
 print("1. For all words")
-model = ob.train_hmm(x, estimator)
-ob.test_hmm(model, y)
+# Train the model
+trainer, model = ob.train_hmm(x, estimator)
+# test the model
+# ob.test_hmm(model, y)
 
+"""
+2. Accuracy for out-of-vocabulary words
+"""
+tagged_words = hmm.tag(y)
 """
 Test for OOV words
 """
@@ -236,3 +277,14 @@ updated_tagged_testing_data = ob.update_data_to_contain_top10_words(y, top10word
 print("4. For Top 10 highest entropy words")
 ob.test_hmm(model, updated_tagged_testing_data)
 
+"""
+Plotting Learning Curve using Best Model
+"""
+percentages = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0]
+for percentage in percentages:
+    # Load the data into memory
+    print(percentage, "of files in section 00 for training")
+    (x, y, w, z, a, b) = ob.load_data(percentage)
+    estimator = lambda fdist, bins: WittenBellProbDist(fdist,bins) # Witten Bell
+    model = ob.train_hmm(x, estimator)
+    ob.test_hmm(model, y)

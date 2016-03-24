@@ -7,7 +7,7 @@ from math import log2
 import numpy as np
 import operator
 
-class Q6_Final1(object):
+class Q6_Final(object):
 
     def load_data(self, percentage):
         print("Started Loading the Data")
@@ -199,25 +199,72 @@ class Q6_Final1(object):
             predicted.append(predicted_sentence)
         return predicted
 
-ob = Q6_Final1()
-# Loading the dataset
+# Instantiate the class
+ob = Q6_Final()
+# Load the data set
 (x, y, w, z, a, b) = ob.load_data(percentage=1)
-# Computing the Tag Entropies and Top 10 Entropy Words
-tag_entropies_of_words, word_tags, tagged_words_fdist = ob.entropy_of_words(z)
-top10_wordentropies = tag_entropies_of_words[:10]
-top10words = [word for word, entropy in top10_wordentropies]
+"""
+Sub Problem 1: Finding oovs
+"""
+oovs = ob.find_OOVs(w,z)
+"""
+Sub Problem2: Finding the Words with out punctuations
+"""
+words_without_punctuation = set()
+for sentence in y:
+    for tagged_word in sentence:
+        if str(tagged_word[0]).isalnum():
+            words_without_punctuation.add(tagged_word[0])
+
+"""
+Sub Problem3: Computing the Tag Entropies and Top 10 Entropy Words
+"""
+tag_entropies_of_words, word_tags, tagged_words_fdist = ob.entropy_of_words(z)# Compute the entropies of words
+top10_wordentropies = tag_entropies_of_words[:10]# Get the top 10 words entropies
+print("Top 10 Words and Entropies", top10_wordentropies) # Print the top 10 words and their entropies
+top10words = [word for word, entropy in top10_wordentropies]# List of top 10 words
 print("Top 10 Highest Tag Entropy Words")
 for word in top10words:
     tagged_words = word_tags[word]
     print(word, tagged_words)
     counts = [tagged_words_fdist[tagged_word] for tagged_word in tagged_words]
     print(counts)
-# Finding the Words with out punctuations
-words_without_punctuation = set()
-for sentence in y:
-    for tagged_word in sentence:
-        if str(tagged_word[0]).isalnum():
-            words_without_punctuation.add(tagged_word[0])
+
+"""
+Probability Distribution
+"""
+print("+++++++++++++++++++++++++++++ MLE, Laplace, Witten Bell, Simple Good Turing +++++++++++++++++++++++++++++")
+estimator = lambda fdist, bins: MLEProbDist(fdist) # MLE Estimator
+#estimator = lambda fdist, bins: LaplaceProbDist(fdist,bins) # Laplace Estimator
+#estimator = lambda fdist, bins: WittenBellProbDist(fdist,bins) # Written Bell
+#estimator = lambda fdist, bins: SimpleGoodTuringProbDist(fdist,bins) # Simple Good Turing
+# Train the Model
+model = ob.train_hmm(x, estimator)
+predicted_tags = [model.tag(sent) for sent in b] # Predicted Tags
+# Accuracy for all the words
+print("1. Accuracy of all the words", ob.test_hmm(model, y))
+# Accuracy for OOV's
+print("2. Accuracy for OOV's", ob.acc(oovs, y, predicted_tags))
+# Accuracy for all words with out punctuations
+print("3. Accuracy for words with out punctuations", ob.acc(words_without_punctuation, y, predicted_tags))
+# 4. Accuracy for High Entropy words
+print("4. Accuracy for High Entropy words", ob.acc(top10words, y, predicted_tags))
+
+"""
+Model 5: Most Likely Tag Tagger
+"""
+print("+++++++++++++++++++++++++++++ Most Likely Tag Tagger +++++++++++++++++++++++++++++")
+model = ob.most_likely_tagger_train(w) # Train the model
+predicted_tags = ob.most_likely_tagger_test(oovs, y, model) # Test the model
+# Accuracy for all the words
+print("1. Accuracy for all words : ", ob.acc_all(y, predicted_tags))
+# Accuracy for OOVS
+print("2. Accuracy for OOV's :", ob.acc(oovs, y, predicted_tags))
+# Accuracy for words with out punctuations
+print("3. Accuracy for words with out punctuations", ob.acc(words_without_punctuation, y, predicted_tags))
+# Accuracy for Top 10 Highest Entropy words
+print("4. Accuracy for Top 10 Highest Entropy Words :", ob.acc(top10words, y, predicted_tags))
+
 """
 For Best HMM : Most Likely Tag using Gamma
 """
@@ -239,128 +286,26 @@ for sentence in b: # Start Predicting tags for each word in the sentence of test
         tagged_word.append(tag)
         tagged_sent.append(tuple(tagged_word))
     predicted_tags.append(tagged_sent)# Add the tagged sentence to predicted tags list
-print("No of sentence in Predicted Data set", len((predicted_tags)))
+#print("No of sentence in Predicted Data set", len((predicted_tags)))
 # For all the words case
-print("For Best HMM Most Likely Tag Tagger: For all words", ob.acc_all(y, predicted_tags))
+print("1. For Best HMM Most Likely Tag Tagger: For all words", ob.acc_all(y, predicted_tags))
 # For OOV's
-oovs = ob.find_OOVs(a, b)
-print("For Best HMM Most Likely Tag Tagger: For oovs", ob.acc(oovs, y, predicted_tags))
+print("2. For Best HMM Most Likely Tag Tagger: For oovs", ob.acc(oovs, y, predicted_tags))
 # For Words with out punctuations
-print("For Best HMM Most Likely Tag Tagger: For Words with out punctuations", ob.acc(words_without_punctuation, y, predicted_tags))
+print("3. For Best HMM Most Likely Tag Tagger: For Words with out punctuations", ob.acc(words_without_punctuation, y, predicted_tags))
 # For Top 10 Entropy Words
-print("Top 10 Highest Tag Entropy Words")
-for word in top10words:
-    tagged_words = word_tags[word]
-    print(word, tagged_words)
-    counts = [tagged_words_fdist[tagged_word] for tagged_word in tagged_words]
-    print(counts)
-print("Top 10 Entropy Words", ob.acc(top10words, y, predicted_tags))
-
-"""
-Most Likely Tag Tagger
-"""
-model = ob.most_likely_tagger_train(w)
-oovs = ob.find_OOVs(w,z)
-predicted_tags = ob.most_likely_tagger_test(oovs, y, model)
-# Accuracy for all the words
-print("Accuracy for all words : ", ob.acc_all(y, predicted_tags))
-# Accuracy for OOVS
-print("Accuracy for OOV's :", ob.acc(oovs,y,predicted_tags))
-# Accuracy for words with out punctuations
-words_without_punctuation = set()
-for sentence in y:
-    for tagged_word in sentence:
-        if str(tagged_word[0]).isalnum():
-            words_without_punctuation.add(tagged_word[0])
-print("Accuracy for words with out punctuations", ob.acc(words_without_punctuation, y, predicted_tags))
-# Accuracy for Top 10 Highest Entropy Words
-tag_entropies_of_words, word_tags, tagged_words_fdist = ob.entropy_of_words(z)
-top10_wordentropies = tag_entropies_of_words[:10]
-top10words = [word for word, entropy in top10_wordentropies]
-print("Top 10 Highest Tag Entropy Words")
-for word in top10words:
-    tagged_words = word_tags[word]
-    print(word, tagged_words)
-    counts = [tagged_words_fdist[tagged_word] for tagged_word in tagged_words]
-    print(counts)
-print("Accuracy for Top 10 Highest Entropy Words :", ob.acc(top10words, y, predicted_tags))
-
-"""
-Probability Distribution
-"""
-print("+++++++++++++++++++++++++++++ MLE, Laplace, Witten Bell, Simple Good Turing +++++++++++++++++++++++++++++")
-estimator = lambda fdist, bins: MLEProbDist(fdist) # MLE Estimator
-#estimator = lambda fdist, bins: LaplaceProbDist(fdist,bins) # Laplace Estimator
-#estimator = lambda fdist, bins: WittenBellProbDist(fdist,bins) # Written Bell
-#estimator = lambda fdist, bins: SimpleGoodTuringProbDist(fdist,bins) # Simple Good Turing
-"""
-Train the Model
-"""
-model = ob.train_hmm(x, estimator)
-"""
-1. Accuracy of all the words
-"""
-print("1. Accuracy of all the words")
-ob.test_hmm(model, y)
-"""
-2. Accuracy for OOV's
-"""
-print("2. Accuracy for OOV's")
-oovs = ob.find_OOVs(a, b)
-predicted_tags = [model.tag(sent) for sent in b]
-accuracy = ob.acc(oovs, y, predicted_tags)
-"""
-3. Accuracy for all words with out punctuations
-    For Testing:
-    - Remove words that are having punctuations in the sentences of test data set.
-    - Use the updated list of tagged sentences.
-"""
-#print("3. For all words with out punctuations")
-#updated_tagged_testing_data = ob.remove_words_having_punctations(y)
-#ob.test_hmm(model, updated_tagged_testing_data)
-# Find the words without having punctuations
-print("Accuracy for all words with out punctuations")
-words_without_punctuation = set()
-for sentence in y:
-    for tagged_word in sentence:
-        if str(tagged_word[0]).isalnum():
-            words_without_punctuation.add(tagged_word[0])
-ob.acc(words_without_punctuation, y, predicted_tags)
-"""
-4. Accuracy for High Entropy words
-"""
-print("4. Accuracy for High Entropy words")
-
-print("Top 10 Highest Tag Entropy Words")
-for word in top10words:
-    tagged_words = word_tags[word]
-    print(word, tagged_words)
-    counts = [tagged_words_fdist[tagged_word] for tagged_word in tagged_words]
-    print(counts)
-ob.acc(top10words, y, predicted_tags)
+print("4. Top 10 Entropy Words", ob.acc(top10words, y, predicted_tags))
 
 
 """
-For Best HMM Most Likely Tag Tagger
+Plotting Learning Curve using Best HMM Model
 """
-"""
-estimator = lambda fdist, bins: WittenBellProbDist(fdist, bins) # Written Bell
-model = ob.train_hmm(x, estimator)
-tags = model._states
-predicted_tags = list()
-for sentence in b:
-    alpha = np.power(2, model._forward_probability(sentence))
-    beta = np.power(2, model._backward_probability(sentence))
-    numer = np.multiply(alpha, beta)
-    indices = np.argmax(numer, axis=1)
-    sent_tags = [tags[index] for index in indices]
-    tagged_sent = list()
-    for word,tag in zip(sentence, sent_tags):
-        tagged_word = list()
-        tagged_word.append(word)
-        tagged_word.append(tag)
-        tagged_sent.append(tuple(tagged_word))
-    predicted_tags.append(tagged_sent)
-print(len((predicted_tags)))
-print("For Best HMM Most Likely Tag Tagger", ob.acc_all(y,predicted_tags))
-"""
+print("+++++++++++++++++++++++++++++ Plotting Learning Curve using Best HMM Model +++++++++++++++++++++++++++++")
+percentages = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0]
+for percentage in percentages:
+    # Load the data into memory
+    print(percentage, "of files in section 00 for training")
+    (x, y, w, z, a, b) = ob.load_data(percentage)
+    estimator = lambda fdist, bins: WittenBellProbDist(fdist,bins) # Witten Bell
+    model = ob.train_hmm(x, estimator)
+    ob.test_hmm(model, y)

@@ -1,7 +1,7 @@
 Q.1 Solution
 I/PRP need/VBP a/DT flight/NN from/IN Atlanta/NNP
 Does/VBZ this/DT flight/NN serve/VBP Dinner/NNS
-I/PRP have/VBP a/DT friend/NN living/VBZ in/IN Denver/NNP
+I/PRP have/VBP a/DT friend/NN living/VBG in/IN Denver/NNP
 Can/MD you/PRP list/VB the/DT nonstop/JJ afternoon/NN flights/NNS
 
 Q2. Solution
